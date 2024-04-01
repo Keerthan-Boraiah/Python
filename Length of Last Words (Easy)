@@ -28,3 +28,38 @@ Constraints:
 1 <= s.length <= 104
 s consists of only English letters and spaces ' '.
 There will be at least one word in s.
+
+#---------------------------------------------------------------------------------------------------
+#CODE HERE
+#---------------------------------------------------------------------------------------------------
+
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        
+        final = list(filter(("").__ne__, s.split(" ")))
+
+        return len(final[-1])
+
+#---------------------------------------------------------------------------------------------------
+#Explanation Here
+#---------------------------------------------------------------------------------------------------
+
+intuition
+It is a beginner's thinking.
+
+Approach
+1st:- split the string into list. I'm splitting the list by " ", so all the words which have empty space will eb split
+2nd:- remove all the empty space, so finally you will have list of words.
+3rd:- return last index length from the list of words
+
+DONE.
+
+Complexity
+Time complexity:
+O(n) for splitting
+O(1) for filtering
+Therefore time complexity is O(n)
+
+Space complexity:
+O(n) for storing the split list in 'FINAL'
+Therefore space complexity is O(n)
