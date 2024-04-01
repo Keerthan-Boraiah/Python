@@ -1,0 +1,100 @@
+"https://leetcode.com/problems/zigzag-conversion/description/"
+#------------------------------------------------------------------------------------
+
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+
+P   A   H   N
+A P L S I I G
+Y   I   R
+And then read line by line: "PAHNAPLSIIGYIR"
+
+Write the code that will take a string and make this conversion given a number of rows:
+
+string convert(string s, int numRows);
+ 
+
+Example 1:
+
+Input: s = "PAYPALISHIRING", numRows = 3
+Output: "PAHNAPLSIIGYIR"
+Example 2:
+
+Input: s = "PAYPALISHIRING", numRows = 4
+Output: "PINALSIGYAHRPI"
+Explanation:
+P     I    N
+A   L S  I G
+Y A   H R
+P     I
+Example 3:
+
+Input: s = "A", numRows = 1
+Output: "A"
+ 
+
+Constraints:
+
+1 <= s.length <= 1000
+s consists of English letters (lower-case and upper-case), ',' and '.'.
+1 <= numRows <= 1000
+
+
+
+
+#------------------------------------------------------------------------------------
+Intuition
+beginners approach
+
+Approach
+so what i am doing is
+
+1st:- create lenght of numRows list inside the list
+2nd:- append 1st index of the string to each list in order like (1,2,3,2,1,2,3,2,1,....)
+3rd:- join all the list and voila the output.
+
+Reply to me if you dont understand, ill explain in detail.
+
+Complexity
+Time complexity:
+O(n) - for loop
+O(n) - while loop
+Therefore it is O(2n) == O(n)
+
+Space complexity:
+same as time complexity
+O(numRows * n) == O(n)
+
+Code:- 
+#------------------------------------------------------------------------------------
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        
+        final = [[] for i in range(numRows)]
+        counter,position = 0,'+'
+        s = list(s)
+        
+        if numRows == 1:
+            return "".join(s)
+        
+        else:
+        
+            while len(s) !=0:
+                final[counter].append(s[0])
+                if position == "+":
+                    if counter == numRows-1:
+                        position = '-'
+                        counter -= 1
+                        del s[0]
+                    else:
+                        counter += 1
+                        del s[0]
+                else:
+                    if counter == 0:
+                        position = '+'
+                        counter += 1
+                        del s[0]
+                    else:
+                        counter -= 1
+                        del s[0]
+            
+            return "".join(sum(final,[]))
