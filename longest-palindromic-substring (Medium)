@@ -1,0 +1,29 @@
+"https://leetcode.com/problems/longest-palindromic-substring/description/"
+
+#-------------------------------------------------------------------
+
+Smallest Python Brute force approach
+
+Keerthan_Boraiah
+0
+a few seconds ago
+Python3
+Intuition
+Approach
+Complexity
+Time complexity:
+O(N*N)
+
+Space complexity:
+O(N)
+
+Code
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+                
+        palindrome = ""
+        for j in range(len(s)+1):
+            for i in range(len(s)+1):
+                if len(s[j:i]) > len(palindrome) and s[j:i] == s[j:i][::-1]:
+                    palindrome = s[j:i]
+        return palindrome
