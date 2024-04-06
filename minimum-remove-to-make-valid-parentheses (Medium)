@@ -1,0 +1,61 @@
+https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/description/?envType=daily-question&envId=2024-04-06
+#-------------------------------------------------------------------------
+
+Easy Python solution
+
+Keerthan_Boraiah
+0
+a few seconds ago
+Python3
+Intuition
+Approach
+Complexity
+Time complexity:
+O(2*N) = O(N)
+
+Space complexity:
+O(N)
+
+Code
+class Solution:
+    def minRemoveToMakeValid(self, s: str) -> str:
+        
+        PC = 0
+        NC = 0
+        S = list(s)
+        deletion = []
+        
+        for i in range(2):
+            if i == 0:
+                for i in range(len(S)):
+                    if S[i] == '(':
+                        PC += 1
+                    elif S[i] == ')':
+                        if NC == PC:
+                            deletion.append(i)
+                        else:
+                            PC -= 1
+                
+                for index in sorted(deletion, reverse=True):
+                    del S[index]
+                    
+                deletion = []
+                S = S[::-1]
+                PC = 0
+                NC = 0
+            else:
+                for i in range(len(S)):
+                    if S[i] == ')':
+                        PC += 1
+                    elif S[i] == '(':
+                        if NC == PC:
+                            deletion.append(i)
+                        else:
+                            PC -= 1
+                
+                for index in sorted(deletion, reverse=True):
+                    del S[index]
+                    
+                S = S[::-1]               
+        
+        return "".join(S)
