@@ -1,0 +1,35 @@
+https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/description/
+*-----------------------------------------------------------------------
+Easy python
+
+Keerthan_Boraiah
+2
+0
+a few seconds ago
+Python3
+Intuition
+Approach
+Complexity
+Time complexity:
+O(n)
+
+Space complexity:
+O(n)
+
+Code
+class Solution:
+    def countStudents(self, students: list[int], sandwiches: list[int]) -> int:
+
+        shift = 0
+        while shift < len(students):
+            if len(students) > 0:
+                if students[0] == sandwiches[0]:
+                    del students[0],sandwiches[0]
+                    shift = 0
+                else:
+                    students.sort(key = students[0].__eq__)
+                    shift += 1
+            else:
+                break
+                
+        return len(students)
