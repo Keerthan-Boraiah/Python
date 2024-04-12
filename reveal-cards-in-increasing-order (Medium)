@@ -1,0 +1,30 @@
+https://leetcode.com/problems/reveal-cards-in-increasing-order/solutions/5012317/easy-dqeue-solution/
+#------------------------------------------------------------------------------------------------------
+Easy Dqeue Solution
+
+Keerthan_Boraiah
+2
+0
+a few seconds ago
+Python3
+Intuition
+Approach
+Complexity
+Time complexity:
+O(n)
+
+Space complexity:
+O(n)
+
+Code
+class Solution:
+    def deckRevealedIncreasing(self, deck: list[int]) -> list[int]:
+        from collections import deque
+        
+        new = deque([])
+        
+        for i in sorted(deck)[::-1]:
+            new.rotate(1)
+            new.insert(0,i)
+        
+        return list(new)
